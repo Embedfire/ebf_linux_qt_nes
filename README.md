@@ -1,4 +1,4 @@
-### 本代码来源于github： https://github.com/nejidev/arm-NES-linux，感谢前辈的开源
+### 本代码来源于github： https://github.com/nejidev/arm-NES-linux  感谢前辈的开源
 
 ## 编译使用
 1、首先安装gcc，或直接使用野火qt demo中的sdk均可
