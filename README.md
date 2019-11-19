@@ -6,8 +6,10 @@
 3、修改Makefile中的gcc
 
 export PATH=/opt/arm-gcc/bin:$PATH
+
 vim arm-NES-linux-/linux/makefile
 CC = arm-linux-gnueabihf-gcc
+
 #编译
 # arm-NES-linux emulate for InfoNES open source
 ## Planform
