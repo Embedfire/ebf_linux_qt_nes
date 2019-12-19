@@ -15,10 +15,13 @@ sudo tar -jxf libnes-arm.tar.bz2 -C /usr/local/
 cd linux/
 make
 ```
-5. 此时当前目录下会生成一个 `InfoNes` 可执行文件，与Qt 配合使用即可，将其拷贝到Qt App相同的目录下即可！！
+5. 此时当前目录下会生成一个 `InfoNes` 可执行文件！拷贝到开发板上即可运行。
+```bahs
+./InfoNes xxx.nes
+```
 
 ## 注意事项
-`InfoNes` 可执行文件 是需要与野火Qt配合使用才会有图形界面，单独运行是不会有图形界面的！！
+如果单独运行nes的话，需要把Qt关了，否则会抢资源刷新屏幕，屏幕会重影。
 
 ## 编译错误
 当遇到以下错误就表明找不到相关的依赖文件，检查`/usr/local/`目录下是否存在`libnes-arm/libasound-arm/`、`libnes-arm/libzlib-arm/`等文件夹！
