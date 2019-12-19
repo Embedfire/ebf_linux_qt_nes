@@ -71,7 +71,7 @@ char gamedev_find(char *dev)
     memset(handler, 0, sizeof(handler));
 
     usb_dev_search();
-    usb_dev_parsing(dev, handler, _gamedev_dev_num);
+    usb_dev_parsing(dev, handler, _gamedev_dev_num, MAX_GAMEDEV);
 
     for (i = _gamedev_dev_num; i < MAX_GAMEDEV; i++) {
         if (strlen(handler[i].handler)) {

@@ -55,7 +55,7 @@ ret:
     return num;
 }
 
-int usb_dev_parsing(char *str, usb_dev_handler_t *handler, int num)
+int usb_dev_parsing(char *str, usb_dev_handler_t *handler, int num, int max)
 {
     int i, h = num;
     for (i = num; i < DEVICES_NUM; i++) {
@@ -64,7 +64,7 @@ int usb_dev_parsing(char *str, usb_dev_handler_t *handler, int num)
             memcpy(handler[h].handler, _usb_devices[i].handler,sizeof(_usb_devices[i].handler));
             printf("handler[%d].handler = %s, len: %ld\n", h, handler[h].handler, sizeof(_usb_devices[i].handler));
             h++;
-            if(h >= DEVICES_NUM)
+            if(h >= max)
                 return h;
         }
     }

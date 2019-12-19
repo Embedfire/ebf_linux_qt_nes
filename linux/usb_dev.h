@@ -19,7 +19,7 @@ typedef struct usb_dev_handler {
 
 
 int usb_dev_search(void);
-int usb_dev_parsing(char *str, usb_dev_handler_t *handler, int num);
+int usb_dev_parsing(char *str, usb_dev_handler_t *handler, int num, int max);
 
 
 #endif
