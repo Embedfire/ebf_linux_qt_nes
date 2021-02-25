@@ -1,4 +1,4 @@
-CC = arm-linux-gnueabihf-gcc
+CC = ${TARGET_PREFIX}
 TARBALL = InfoNES08J
 
 # InfoNES
