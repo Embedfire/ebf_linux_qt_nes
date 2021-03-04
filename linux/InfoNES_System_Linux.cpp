@@ -63,6 +63,7 @@ static int screen_width;
 static int lcd_width;
 static int lcd_height;
 static struct fb_var_screeninfo var;
+static struct fb_fix_screeninfo finfo;
 
 static int *zoom_x_tab;
 static int *zoom_y_tab;
@@ -90,6 +91,10 @@ static int lcd_fb_init()
         printf("cat't open /dev/fb0 \n");
         return -1;
     }
+    if(-1==ioctl(fb_fd,FBIOGET_FSCREENINFO,&finfo))
+    {
+        printf("cat't ioctl /dev/fb0 \n");
+    }
     //获取屏幕参数
     if(-1 == ioctl(fb_fd, FBIOGET_VSCREENINFO, &var))
     {
@@ -100,12 +105,16 @@ static int lcd_fb_init()
 
     //计算参数
     px_width     = var.bits_per_pixel / 8;
-    line_width   = var.xres * px_width;
+    //line_width   = var.xres * px_width; 6ul和157获取出来的参数不同，最终造成花屏，修复如下
+    line_width   = finfo.line_length;
     screen_width = var.yres * line_width;
     lcd_width    = var.xres;
     lcd_height   = var.yres;
 
     printf("fb width:%d height:%d \n", lcd_width, lcd_height);
+    printf("px_width:%d line_width:%d  screen_width:%d\n", px_width, line_width,screen_width);
+    printf("var.bits_per_pixel:%d var.xres:%d  var.yres:%d \n", var.bits_per_pixel, var.xres,var.yres);
+    printf("finfo line_length:%d \n", finfo.line_length);
 
     fb_mem = (unsigned char *)mmap(NULL, screen_width, PROT_READ | PROT_WRITE, MAP_SHARED, fb_fd, 0);
     if(fb_mem == (void *)-1)
