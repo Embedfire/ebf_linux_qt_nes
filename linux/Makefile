@@ -1,4 +1,6 @@
-CC = arm-linux-gnueabihf-gcc
+#CC = arm-linux-gnueabihf-gcc
+#使用yocto编译工具链编译nes模拟器
+CC = ${TARGET_PREFIX}
 TARBALL = InfoNES08J
 
 # InfoNES
